@@ -1,0 +1,21 @@
+{
+  "name": "xport",
+  "version": "1.0.0",
+  "description": "Generate Export Statement",
+  "scripts": {
+    "patch-release": "npm version patch && npm publish && git push --follow-tags",
+    "build": "tsc && chmod +x dist/index.js"
+  },
+  "bin": {
+    "xport": "dist/index.js"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "main": "dist/index.js",
+  "author": "Zhongyuan Jin",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^13.11.0"
+  }
+}
