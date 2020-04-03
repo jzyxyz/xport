@@ -1,6 +1,6 @@
 {
   "name": "xported",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate Export Statement",
   "scripts": {
     "patch-release": "npm version patch && npm publish && git push --follow-tags",
