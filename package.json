@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc && chmod +x dist/index.js"
   },
-  "bin": "dist/xported",
+  "bin": "dist/index.js",
   "files": [
     "dist/*"
   ],
