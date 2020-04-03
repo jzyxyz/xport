@@ -3,12 +3,9 @@
   "version": "1.0.1",
   "description": "Generate Export Statement",
   "scripts": {
-    "patch-release": "npm version patch && npm publish && git push --follow-tags",
     "build": "tsc && chmod +x dist/index.js"
   },
-  "bin": {
-    "xport": "dist/index.js"
-  },
+  "bin": "dist/xported",
   "files": [
     "dist/*"
   ],
