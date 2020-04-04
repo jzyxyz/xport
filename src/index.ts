@@ -8,13 +8,19 @@ import { promisify } from 'util'
 import yargs from 'yargs'
 const execP = promisify(exec)
 const files = readdirSync(process.cwd())
-const { argv } = yargs.option('ext', {
-  alias: 't',
-  default: '.ts',
-  description: 'file type: .ts|.js, default to .ts',
-})
+const { argv } = yargs
+  .option('ext', {
+    alias: 'e',
+    default: '.ts',
+    description: 'file type: .ts|.js, default to .ts',
+  })
+  .option('compilerOption', {
+    alias: 'c',
+    default: '',
+    description: 'if you need any other compiler options',
+  })
 
-const { ext } = argv
+const { ext, compilerOption } = argv
 
 interface ModuleData {
   moduleName: string
@@ -40,7 +46,7 @@ const handleTs = async (scripts: string[]) => {
   const tmp = '__tmp__'
   mkdirpSync(tmp)
   await execP(
-    `tsc --outDir ${tmp} --allowJs --module commonjs --esModuleInterop --moduleResolution node --target ES2019 ./*${ext}`,
+    `tsc --outDir ${tmp} --allowJs --module commonjs --esModuleInterop --moduleResolution node --target ES2019 ${compilerOption} ./*${ext}`,
   )
 
   const ms: ModuleData[] = await Promise.all(
